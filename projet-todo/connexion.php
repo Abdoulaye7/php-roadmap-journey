@@ -9,22 +9,25 @@ $password = $_POST['mot_de_passe'] ?? '';
 $success = false;
 $errors = [];
 
-$stmt = $connexion->prepare('SELECT * FROM utilisateurs WHERE email =:email');
-$stmt->bindParam('email',$email);
-$stmt->execute();
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $stmt = $connexion->prepare('SELECT * FROM utilisateurs WHERE email =:email');
+    $stmt->bindParam('email',$email);
+    $stmt->execute();
 
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($user && password_verify($password,$user['mot_de_passe'])){
-    //$success = true;
-    $_SESSION['nom'] = $user['nom'];
+    if($user && password_verify($password,$user['mot_de_passe'])){
+        //$success = true;
+        $_SESSION['nom'] = $user['nom'];
+        $_SESSION['utilisateur_id'] = $user['id'];
 
-    header('Location: dashboard.php');
-    exit();
-    
-} else {
-    // Erreur : mot de passe incorrect ou email non trouvé
-    $errors['login'] = 'Email ou mot de passe incorrect';
+        header('Location: dashboard.php');
+        exit();
+
+    } else {
+        // Erreur : mot de passe incorrect ou email non trouvé
+        $errors['login'] = 'Email ou mot de passe incorrect';
+    }
 }
 
 ?>
