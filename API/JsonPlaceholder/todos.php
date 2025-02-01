@@ -46,7 +46,7 @@ $paginatedTodos = array_slice($todos, $offset, $perPage);
 
         <!-- Bouton pour ajouter une tâche -->
         <div class="text-end mb-3">
-            <a href="#" class="btn btn-primary">Ajouter une tâche</a>
+            <a href="ajout.php" class="btn btn-primary">Ajouter une tâche</a>
         </div>
 
         <!-- Tableau des tâches -->
