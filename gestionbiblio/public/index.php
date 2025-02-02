@@ -4,13 +4,19 @@ use App\Routes\Router;
 
 require '../vendor/autoload.php';
 
+// Définis le basePath en fonction de la structure de ton projet
+$basePath = '/tutophp/php-roadmap-journey/gestionbiblio/public';
 
-$router = new Router(dirname(__DIR__). '/app/Views');
 
+$router = new Router(dirname(__DIR__) . '/app/Views', $basePath);
 
-$router
-    ->get('/Biblio/livre', 'Biblio/livre/index', 'biblio_livre')
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+
+//throw new Exception('Test de Whoops');
+
+    $router
+    ->get('GET','/books', '/book/index', 'biblio_index')
     ->run();
 
-
-?>

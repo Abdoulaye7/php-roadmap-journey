@@ -13,9 +13,9 @@ class Router{
         $this->router = new AltoRouter();
     }
 
-    public function get(string $url, string $view, ?string $name = null):self{
+    public function get(string $method,string $url, string $view, ?string $name = null):self{
 
-        $this->router->map('GET',$url,$view,$name);
+        $this->router->map($method,$url,$view,$name);
 
         return $this;
 
@@ -23,23 +23,11 @@ class Router{
 
     public function run(): self {
         $match = $this->router->match();
-      
-    
-        if (!$match) {
-            http_response_code(404);
-            echo "Erreur 404 : Page non trouvée.";
-            return $this;
-        }
     
         $view = $match['target'];
         $viewFile = $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php';
-        var_dump($viewFile);
+       // var_dump($viewFile);
     
-        if (!file_exists($viewFile)) {
-            http_response_code(500);
-            echo "Erreur 500 : Fichier de vue introuvable : " . $viewFile;
-            return $this;
-        }
     
         require $viewFile;
         return $this;
