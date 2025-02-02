@@ -18,5 +18,6 @@ $whoops->register();
 
     $router
     ->get('GET','/books', '/book/index', 'biblio_index')
+    ->get('GET','/books/[i:id]','/book/show','biblio_show')
     ->run();
 

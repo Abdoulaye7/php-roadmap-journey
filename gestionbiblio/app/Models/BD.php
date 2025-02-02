@@ -1,10 +1,10 @@
 <?php
-namespace APP\Models;
+namespace App\Models;
 
 use PDO;
 use PDOException;
 
-class Database {
+class BD {
 
     private static $instance = null;
 
