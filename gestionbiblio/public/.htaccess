@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /tutophp/php-roadmap-journey/gestionbiblio/public/
+
+# Si ce n'est pas un fichier existant ou un dossier existant, tout passe par index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
