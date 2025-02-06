@@ -38,6 +38,9 @@ if (!$book) {
         <div class="mt-8">
             <a href="/books" class="text-blue-500 hover:text-blue-700">Retour à la liste des livres</a>
         </div>
+        <div class="mt-8">
+        <a href="/books/edit/<?= $book['id'] ?>" class="text-blue-500 hover:text-blue-700">Modifier</a>
+        </div>
     </div>
 
 </body>

@@ -19,6 +19,12 @@ $books = BookRepository::getAllBooks();
 
     <div class="container mx-auto p-6">
         <h1 class="text-4xl font-bold text-center mb-8">Liste des Livres</h1>
+      <div class="flex justify-end p-4">
+        <a href="/books/add" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">
+            Ajouter un Livre
+        </a>
+     </div>
+
 
         <div class="bg-white p-6 rounded-lg shadow-md">
             <ul class="space-y-4">

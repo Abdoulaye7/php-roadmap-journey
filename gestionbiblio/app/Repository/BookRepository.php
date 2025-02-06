@@ -25,4 +25,23 @@ class BookRepository {
         return $stmt->fetch(PDO::FETCH_ASSOC);
        
     }
+    public static function addBook($title, $author) {
+        $connexion = BD::getInstance();
+        $stmt = $connexion->prepare("INSERT INTO Books (title, author) VALUES (:title, :author)");
+        $stmt->execute([
+            ':title' => $title,
+            ':author' => $author
+        ]);
+    }
+
+    public static function updateBook($id, $title, $author) {
+        $connexion = BD::getInstance();
+        $stmt = $connexion->prepare("UPDATE Books SET title = :title, author = :author WHERE id = :id");
+        $stmt->execute([
+            ':id' => $id,
+            ':title' => $title,
+            ':author' => $author
+        ]);
+    }
+    
 }
